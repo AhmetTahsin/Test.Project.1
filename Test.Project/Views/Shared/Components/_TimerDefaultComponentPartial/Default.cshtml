@@ -1,0 +1,150 @@
+﻿@model List<ResultMatchDto>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<style>
+    .countdown-container {
+        background-image: url('/sayac-1.png'); /* Resmi ekle */
+        background-size: cover; /* Resmin boyutunu kapsamasını sağla */
+        background-position: center; /* Resmi ortala */
+        color: white;
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .countdown-title {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        width: 100%;
+    }
+    .countdown-images img {
+        height: 50px;
+        margin: 0 20px;
+    }
+    .clock-item {
+        display: inline-block;
+        margin: 0 15px;
+    }
+    .clock-item .text {
+        color: white; /* Yazı rengini beyaz yap */
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    .text .val {
+        color: white; /* Değerlerin rengini beyaz yap */
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .text .type-time {
+        color: white; /* Zaman türlerinin rengini beyaz yap */
+        font-size: 12px;
+    }
+</style>
+
+<div class="countdown-container">
+    @foreach(var item in Model)
+    {
+        <div class="countdown-images">
+            <img src="~/@item.Team1LogoUrl" alt="@item.Team1">
+            <i style="font-size: 30px;">@item.Team1</i>
+        </div>
+
+        <!-- Geri sayım başlığı ve sayaç -->
+        <div>
+            <div class="countdown-title">Maçın Başlamasına</div>
+            <div class="clock">
+                <!-- günler -->
+                <div class="clock-item clock-days">
+                    <div class="text">
+                        <p class="val" id="days-@item.MatchId">0</p>
+                        <p class="type-time">GÜN</p>
+                    </div>
+                </div>
+                <!-- saatler -->
+                <div class="clock-item clock-hours">
+                    <div class="text">
+                        <p class="val" id="hours-@item.MatchId">0</p>
+                        <p class="type-time">SAAT</p>
+                    </div>
+                </div>
+                <!-- dakikalar -->
+                <div class="clock-item clock-minutes">
+                    <div class="text">
+                        <p class="val" id="minutes-@item.MatchId">0</p>
+                        <p class="type-time">DAKİKA</p>
+                    </div>
+                </div>
+                <!-- saniyeler -->
+                <div class="clock-item clock-seconds">
+                    <div class="text">
+                        <p class="val" id="seconds-@item.MatchId">0</p>
+                        <p class="type-time">SANİYE</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="countdown-images">
+            <i style="font-size: 30px;">@item.Team2</i>
+            <img src="~/@item.Team2LogoUrl" alt="@item.Team2">
+        </div>
+    }
+</div>
+
+<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        var countdowns = [];
+
+        @foreach (var item in Model)
+        {
+            var matchTime = item.MatchTime.AddHours(3).ToString("yyyy-MM-ddTHH:mm:ss");
+            var matchId = item.MatchId;
+            <text>
+                countdowns.push({
+                    id: "@matchId",
+                    endTime: new Date("@matchTime").getTime()
+                });
+            </text>
+        }
+
+        countdowns.forEach(function(countdown) {
+            setInterval(function() {
+                updateCountdown(countdown.endTime, countdown.id);
+            }, 1000);
+        });
+    });
+
+    function updateCountdown(endTime, matchId) {
+        var now = new Date().getTime();
+        var distance = endTime - now;
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days-" + matchId).innerHTML = days;
+        document.getElementById("hours-" + matchId).innerHTML = hours;
+        document.getElementById("minutes-" + matchId).innerHTML = minutes;
+        document.getElementById("seconds-" + matchId).innerHTML = seconds;
+
+        if (distance < 0) {
+            clearInterval(this);
+            document.getElementById("days-" + matchId).innerHTML = "0";
+            document.getElementById("hours-" + matchId).innerHTML = "0";
+            document.getElementById("minutes-" + matchId).innerHTML = "0";
+            document.getElementById("seconds-" + matchId).innerHTML = "MAÇ BAŞLADI";
+        }
+    }
+</script>

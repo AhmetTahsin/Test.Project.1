@@ -1,0 +1,42 @@
+﻿@model List<ResultMovieDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminUILayout/_UILayout.cshtml";
+}
+
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="chart-box">
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>MovieName</th>
+                                <th>ImageUrl</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.MovieName</td>
+                                    <td>@item.ImageUrl</td>
+                                    <td><a asp-action="DeleteMovie" asp-route-id="@item.MovieId" class="btn btn-danger">Sil</a></td>
+                                    <td><a href="/Admin/Movie/UpdateMovie/@item.MovieId" class="btn btn-warning">Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <a href="/Admin/Movie/CreateMovie/" class="btn btn-primary"> Yeni Film Girişi</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

@@ -1,0 +1,33 @@
+﻿@model UpdateMovieDto
+@{
+    ViewData["Title"] = "UpdateMovie";
+    Layout = "~/Areas/Admin/Views/AdminUILayout/_UILayout.cshtml";
+}
+
+
+<section class="content container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Film Güncelle</h4>
+                <br />
+                <div class="bs-example" data-example-id="bordered-table">
+
+                    <form method="post">
+                        <input type="hidden" asp-for="MovieId"/>
+                        <label>Film-Dizi Adı</label>
+                        <input type="text" class="form-control" asp-for="MovieName" />
+                        <br />
+                        <label>Url</label>
+                        <input type="text" class="form-control" asp-for="ImageUrl" />
+                        <br />
+
+                        <button class="btn btn-primary">Film Güncelle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

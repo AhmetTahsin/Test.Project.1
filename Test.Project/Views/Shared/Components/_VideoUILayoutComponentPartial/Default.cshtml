@@ -1,0 +1,23 @@
+﻿<div id="videoOverlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; display: flex; justify-content: center; align-items: center; background-color: rgba(0, 0, 0, 0.5);" onclick="closeVideo(event)">
+    <video id="myVideo" autoplay muted style="max-width: 80%; max-height: 80%; object-fit: contain;">
+        <source src="~/video.mp4" type="video/mp4">
+        Tarayıcınız video etiketini desteklemiyor.
+    </video>
+</div>
+
+<script>
+    function closeVideo(event) {
+        if (event.target === document.getElementById("videoOverlay")) {
+            var video = document.getElementById("myVideo");
+            video.pause(); // Videoyu durdur
+            video.currentTime = 0; // Videoyu başa al
+            document.getElementById("videoOverlay").style.display = "none"; // Div'i gizle
+        }
+    }
+
+    window.onload = function() {
+        var video = document.getElementById("myVideo");
+        video.muted = false; // Sesi aç
+        video.play(); // Videoyu oynat
+    };
+</script>

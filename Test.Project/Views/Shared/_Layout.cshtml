@@ -1,0 +1,59 @@
+﻿<html lang="tr">
+
+
+@await Component.InvokeAsync("_HeadUILayoutComponentPartial");
+
+<body>
+
+    <!--await Component.InvokeAsync("_SayacUILayoutComponentPartial");  --> 
+
+    @await Component.InvokeAsync("_TopbarUILayoutComponentPartial");
+    @await Component.InvokeAsync("_TimerDefaultComponentPartial");
+    @await Component.InvokeAsync("_CampaignDefaultComponentPartial");
+
+
+
+    @RenderBody()
+
+    @await Component.InvokeAsync("_MovieDefaultComponentPartial");
+
+    @await Component.InvokeAsync("_FooterUILayoutComponentPartial");
+
+
+    <a href="#" class="scrollToTop scroll-btn"><i class="fas fa-arrow-up"></i></a>
+
+
+    @await Component.InvokeAsync("_ScriptUILayoutComponentPartial");
+
+
+
+    <div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; display: block; transition: right 0.3s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;"><div class="grecaptcha-logo"><iframe title="reCAPTCHA" width="256" height="60" role="presentation" name="a-dv3x3zocf011" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LdXUtQlAAAAAL_A6mACxoYll2UmOutt_aku1DCE&amp;co=aHR0cHM6Ly9kaWdpdHVyay1pbnRlcm5ldC5jb20udHI6NDQz&amp;hl=tr&amp;v=EGbODne6buzpTnWrrBprcfAY&amp;size=invisible&amp;cb=tnz3xbb49tlk"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response-100000" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div>
+    <iframe data-product="web_widget" title="No content" role="presentation" tabindex="-1" allow="microphone *" aria-hidden="true" style="width: 0px; height: 0px; border: 0px; position: absolute; top: -9999px;" src="about:blank"></iframe>
+
+
+    <div class="cc-grower" style="max-height: 38px;">
+        <div role="dialog" aria-live="polite" aria-label="cookieconsent" aria-describedby="cookieconsent:desc" class="cc-window cc-banner cc-type-info cc-theme-classic cc-static cc-top cc-color-override-342326720 " style="">
+
+            <div class="col-lg-11 text-center">
+
+                <span id="cookieconsent:desc" class="cc-message">Sitemizden en iyi şekilde faydalanabilmeniz için çerezler kullanılmaktadır. Sitemizde ilgili mevzuata uygun olarak kullanılan çerezlerle ilgili bilgi almak için lütfen tıklayınız. <a aria-label="çerezler hakkında" role="button" tabindex="0" class="cc-link" href="/cerez-politikasi" target="_blank">Daha fazla bilgi</a></span>
+            </div>
+
+            <div class="cc-compliance">
+                <a aria-label="çerez kabul edilmedi" role="button" tabindex="0" class="cc-btn cc-dismiss" onclick="cerezkapat()">X</a>
+            </div>
+        </div>
+    </div>
+
+    <div><iframe title="Temsilcilerimizden biriyle sohbet edebileceğiniz bir pencere öğesi açar" id="launcher" tabindex="0" style="color-scheme: light; width: 125px; height: 50px; padding: 0px; margin: 10px 20px; position: fixed; bottom: 0px; overflow: visible; opacity: 1; border: 0px; z-index: 999998; transition-duration: 250ms; transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1); transition-property: opacity, top, bottom; right: 0px;"></iframe></div>
+    <deepl-input-controller></deepl-input-controller>
+
+
+
+    @await Component.InvokeAsync("_VideoUILayoutComponentPartial");
+
+
+
+
+</body>
+</html>

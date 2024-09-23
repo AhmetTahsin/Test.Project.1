@@ -1,0 +1,38 @@
+﻿@model UpdateCampaignDto
+@{
+    ViewData["Title"] = "UpdateCampaign";
+    Layout = "~/Areas/Admin/Views/AdminUILayout/_UILayout.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Kampanya Güncelle</h4>
+                <br />
+                <div class="bs-example" data-example-id="bordered-table">
+
+                    <form method="post">
+                        <input type="hidden" asp-for="CampaignId"/>
+                        <label>Kampanya Başlığı</label>
+                        <input type="text" class="form-control" asp-for="Title" />
+                        <br />
+                        <label>Açıklama</label>
+                        <input type="text" class="form-control" asp-for="Descreption" />
+                        <br />
+                        <label>Görsel Url</label>
+                        <input type="text" class="form-control" asp-for="ImageUrl" />
+                        <br />
+                        <label>Url</label>
+                        <input type="text" class="form-control" asp-for="LinkUrl" />
+                        <br />
+
+                        <button class="btn btn-primary">Kampanya Güncelle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
